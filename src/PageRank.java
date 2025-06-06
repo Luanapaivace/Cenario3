@@ -1,46 +1,157 @@
 public class PageRank {
+
     public static void resolverExercicio5() {
-        // Matriz A (Matriz adjacente)
         double[][] A = {
-                {0, 0, 1, 0},
+                {0, 0, 1, 1},
                 {1, 0, 0, 0},
-                {1, 1, 0, 0},
-                {0, 1, 0, 0}
+                {1, 0, 0, 1},
+                {1, 1, 1, 0}
         };
 
         Matrix matrizA = new Matrix(4, 4, A);
 
-        // Calculando h0 e a0
-        Vector h0 = calcularH0(matrizA);
-        Vector a0 = calcularA0(matrizA);
+        Vector h = calcularH0(matrizA);
+        Vector a = calcularA0(matrizA);
 
-        // Exibindo resultados
         System.out.println("----- Resolução do Exercício 5 -----\n");
-
-        // Exibindo a matriz A
         System.out.println("Matriz A (Matriz Adjacente):");
-        matrizA.mostraMatrix();  // Supondo que você tenha um método `mostraMatrix` para exibir a matriz
+        matrizA.mostraMatrix();
 
-        // Exibindo os vetores h0 e a0
         System.out.println("\nVetor h0:");
-        h0.mostraVector();
+        h.mostraVector();
 
         System.out.println("\nVetor a0:");
-        a0.mostraVector();
+        a.mostraVector();
+
+
+        double criterioParada = 0.0001;
+        int iteracao = 0;
+
+        while (true) {
+            Vector hNovo = calcularH1(matrizA, a);
+            Vector aNovo = calcularA1(matrizA, hNovo);
+
+            double diffH = h.diferencaNorma(hNovo);
+            double diffA = a.diferencaNorma(aNovo);
+
+            if (diffH < criterioParada && diffA < criterioParada) {
+                break;
+            }
+
+            h = hNovo;
+            a = aNovo;
+            iteracao++;
+        }
 
         System.out.println("\n-------- Resultado Final --------");
-
-        // Calculando h1
-        Vector h1 = calcularH1(matrizA, a0);
-        System.out.println("\nVetor hn:");
-        h1.mostraVector();
-
-        // Calculando a1
-        Vector a1 = calcularA1(matrizA, h1);
-        System.out.println("\nVetor an:");
-        a1.mostraVector();
-
+        System.out.println("\nVetor autoridade final:");
+        a.mostraVector();
+        System.out.println("\nQuantidade total de interações: " + iteracao);
     }
+
+    public static void resolverExercicio6() {
+        double[][] A = {
+                {0, 1, 1, 0},
+                {0, 0, 1, 0},
+                {0, 0, 1, 0},
+                {1, 0, 0, 0}
+        };
+
+        Matrix matrizA = new Matrix(4, 4, A);
+
+        Vector h = calcularH0(matrizA);
+        Vector a = calcularA0(matrizA);
+
+        System.out.println("----- Resolução do Exercício 6 -----\n");
+        System.out.println("Matriz A (Matriz Adjacente):");
+        matrizA.mostraMatrix();
+
+        System.out.println("\nVetor h0:");
+        h.mostraVector();
+
+        System.out.println("\nVetor a0:");
+        a.mostraVector();
+
+
+        double criterioParada = 0.0001;
+        int iteracao = 0;
+
+        while (true) {
+            Vector hNovo = calcularH1(matrizA, a);
+            Vector aNovo = calcularA1(matrizA, hNovo);
+
+            double diffH = h.diferencaNorma(hNovo);
+            double diffA = a.diferencaNorma(aNovo);
+
+            if (diffH < criterioParada && diffA < criterioParada) {
+                break;
+            }
+
+            h = hNovo;
+            a = aNovo;
+            iteracao++;
+        }
+
+        System.out.println("\n-------- Resultado Final --------");
+        System.out.println("\nVetor an final:");
+        a.mostraVector();
+        System.out.println("\nQuantidade total de interações: " + iteracao);
+    }
+
+    public static void resolverExercicio7() {
+        double[][] A = {
+                {0, 1, 0, 0, 1, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                {0, 1, 1, 1, 1, 0, 0, 1, 0, 1},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0}
+        };
+
+        Matrix matrizA = new Matrix(10, 10, A);
+
+        Vector h = calcularH0(matrizA);
+        Vector a = calcularA0(matrizA);
+
+        System.out.println("----- Resolução do Exercício 7 -----\n");
+        System.out.println("Matriz A (Matriz Adjacente):");
+        matrizA.mostraMatrix();
+
+        System.out.println("\nVetor h0:");
+        h.mostraVector();
+
+        System.out.println("\nVetor a0:");
+        a.mostraVector();
+
+        double criterioParada = 0.0001;
+        int iteracao = 0;
+
+        while (true) {
+            Vector hNovo = calcularH1(matrizA, a);
+            Vector aNovo = calcularA1(matrizA, hNovo);
+
+            double diffH = h.diferencaNorma(hNovo);
+            double diffA = a.diferencaNorma(aNovo);
+
+            if (diffH < criterioParada && diffA < criterioParada) {
+                break;
+            }
+
+            h = hNovo;
+            a = aNovo;
+            iteracao++;
+        }
+
+        System.out.println("\n-------- Resultado Final --------");
+        System.out.println("\nVetor autoridade final:");
+        a.mostraVector();
+        System.out.println("\nQuantidade total de interações: " + iteracao);
+    }
+
 
     private static Vector calcularH0(Matrix A) {
         double[] somas = new double[A.getLength()];

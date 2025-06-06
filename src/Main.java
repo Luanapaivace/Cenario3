@@ -20,10 +20,10 @@ public class Main {
                     PageRank.resolverExercicio5();
                     break;
                 case 6:
-                    System.out.println("Resolução do Exercício 6 ainda não implementada.");
+                    PageRank.resolverExercicio6();
                     break;
                 case 7:
-                    System.out.println("Resolução do Exercício 7 ainda não implementada.");
+                    PageRank.resolverExercicio7();
                     break;
                 case 8:
                     System.out.println("Resolução do Exercício 8 ainda não implementada.");

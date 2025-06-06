@@ -75,4 +75,14 @@ public class Vector {
 
         return Math.sqrt(somaQuadrados);
     }
+
+    public double diferencaNorma(Vector outro) {
+        double soma = 0;
+        for (int i = 0; i < this.getLength(); i++) {
+            double diff = this.get(i) - outro.get(i);
+            soma += diff * diff;
+        }
+        return Math.sqrt(soma);
+    }
+
 }
