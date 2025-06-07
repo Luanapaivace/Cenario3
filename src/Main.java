@@ -26,7 +26,7 @@ public class Main {
                     PageRank.resolverExercicio7();
                     break;
                 case 8:
-                    System.out.println("Resolução do Exercício 8 ainda não implementada.");
+                    PageRank.resolverExercicio8();
                     break;
                 case 0:
                     System.out.println("Saindo...");
