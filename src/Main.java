@@ -6,7 +6,7 @@ public class Main {
         int opcao;
 
         do {
-            System.out.println("\n--- MENU ---");
+            System.out.println("\n-------------- MENU --------------");
             System.out.println("5 - Mostrar resolução do Exercício 5");
             System.out.println("6 - Mostrar resolução do Exercício 6");
             System.out.println("7 - Mostrar resolução do Exercício 7");

@@ -39,4 +39,17 @@ public class Vector {
             }
         }
     }
+
+    public void mostraVectorCasas() {
+        for (int i = 0; i < dimensao; i++) {
+            double valor = elementos[i];
+            if (Math.abs(valor) < 1e-10) {
+                System.out.printf("0.00000  ");
+            } else {
+                System.out.printf("%.5f  ", valor);
+            }
+        }
+        System.out.println();
+    }
+
 }

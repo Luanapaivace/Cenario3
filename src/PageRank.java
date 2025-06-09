@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PageRank {
 
     public static void resolverExercicio5() {
@@ -51,14 +53,13 @@ public class PageRank {
         resolverExercicio(A, "Exercício 8");
     }
 
-
     private static void resolverExercicio(double[][] A, String titulo) {
         Matrix matrizA = new Matrix(A.length, A[0].length, A);
 
         Vector h = calcularH0(matrizA);
         Vector a = calcularA0(matrizA);
 
-        System.out.println("----- Resolução do " + titulo + " -----\n");
+        System.out.println("---- Resolução do " + titulo + " ----\n");
         System.out.println("Matriz A (Matriz Adjacente):");
         matrizA.mostraMatrix();
 
@@ -88,8 +89,25 @@ public class PageRank {
         }
 
         System.out.println("\n-------- Resultado Final --------");
+
         System.out.println("\nVetor autoridade final:");
-        a.mostraVector();
+        a.mostraVectorCasas();
+
+        double[] valoresOrdenados = new double[a.getLength()];
+        for (int l = 0; l < a.getLength(); l++) {
+            valoresOrdenados[l] = a.get(l);
+        }
+        Arrays.sort(valoresOrdenados);
+        for (int p = 0, j = valoresOrdenados.length - 1; p < j; p++, j--) {
+            double temp = valoresOrdenados[p];
+            valoresOrdenados[p] = valoresOrdenados[j];
+            valoresOrdenados[j] = temp;
+        }
+
+        Vector aOrdenado = new Vector(a.getLength(), valoresOrdenados);
+        System.out.println("\nVetor autoridade em ordem decrescente:");
+        aOrdenado.mostraVectorCasas();
+
         System.out.println("\nQuantidade total de interações: " + iteracao);
     }
 
