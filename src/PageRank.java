@@ -53,6 +53,11 @@ public class PageRank {
         resolverExercicio(A, "Exercício 8");
     }
 
+    public static void resolverPersonalizado(double [][] A) {
+        resolverExercicio(A, "Teste personalizado.");
+    }
+
+
     private static void resolverExercicio(double[][] A, String titulo) {
         Matrix matrizA = new Matrix(A.length, A[0].length, A);
 
